@@ -1,0 +1,15 @@
+
+<link rel="icon" href="/favicon.ico" type="imagen/x-icon" />
+<link rel='stylesheet' href='/stylesheets/style.css' />
+<p>
+  <form method="get" action="/quizzes/<%= quiz.id %>/check">        
+    <p>
+      Pregunta: <%= quiz.question %>
+     </p>
+
+    <p>
+      <input type="text" name="answer" value="<%= answer %>" placeholder="Respuesta" />
+      <input type="submit" value="Comprobar">
+    </p>
+  </form>
+  </p>

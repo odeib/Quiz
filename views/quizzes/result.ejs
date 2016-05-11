@@ -2,9 +2,9 @@
 <html>
 	<head>
 	   <meta charset="utf-8">
+	    <link rel="icon" href="/favicon.ico" type="imagen/x-icon" />
 	   <title>Quiz</title>
-	   <link rel="stylesheet"
-	   		 href="/stylesheets/style.css" />
+	   <link rel='stylesheet' href='/stylesheets/style.css' />
 	   </head>
 	<body>
 	<!--<h2>Quiz: el juego de las preguntas</h2>-->
@@ -15,7 +15,7 @@
 	</p>
 
 	<p>
-		<a href="/question?answer=<%= answer %>"> Inténtelo otra vez </a>
+		 <a href="/quizzes/<%= quiz.id %>?answer=<%= answer %>"> Inténtelo otra vez </a>
 	</p>
 
 	</body>
