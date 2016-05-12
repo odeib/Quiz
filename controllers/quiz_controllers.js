@@ -1,6 +1,7 @@
 
 var models = require('../models');
 
+
 // Autoload el quiz asociado a :quizId
 exports.load = function(req, res, next, quizId) {
 	models.Quiz.findById(quizId)
@@ -15,11 +16,6 @@ exports.load = function(req, res, next, quizId) {
         .catch(function(error) { next(error); });
 };
 
-
-
-
-
-
 // GET /quizzes
 exports.index = function(req, res, next) {
 	models.Quiz.findAll()
@@ -30,8 +26,6 @@ exports.index = function(req, res, next) {
 			next(error);
 		});
 };
-
-
 
 // GET /quizzes/:id
 exports.show = function(req, res, next) {
@@ -54,4 +48,25 @@ exports.check = function(req, res, next) {
 	res.render('quizzes/result', { quiz: req.quiz, 
 								   result: result, 
 								   answer: answer });
+};
+
+// GET /quizzes/new
+exports.new = function(req, res, next) {
+  var quiz = models.Quiz.build({question: "", answer: ""});
+  res.render('quizzes/new', {quiz: quiz});
+};
+
+// POST /quizzes/create
+exports.create = function(req, res, next) {
+  var quiz = models.Quiz.build({ question: req.body.quiz.question, 
+  	                             answer:   req.body.quiz.answer} );
+
+// guarda en DB los campos pregunta y respuesta de quiz
+  quiz.save({fields: ["question", "answer"]})
+  	.then(function(quiz) {
+    	res.redirect('/quizzes');  // res.redirect: Redirección HTTP a lista de preguntas
+    })
+    .catch(function(error) {
+		next(error);
+	});  
 };
