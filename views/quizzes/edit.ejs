@@ -1,0 +1,12 @@
+
+<link rel='stylesheet' href='/stylesheets/style.css' />
+
+<p>
+Edite la pregunta
+</p>
+
+<p>
+  <form method="post" action="/quizzes/<%= quiz.id %>?_method=PUT" >      
+     <% include _form.ejs %>
+  </form>
+</p>
