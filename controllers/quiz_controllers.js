@@ -18,6 +18,7 @@ exports.load = function(req, res, next, quizId) {
 
 // GET /quizzes
 exports.index = function(req, res, next) {
+if ((req.params.format === 'html') || (!req.params.format)){ 
 
 if (req.query.search) {
   var search = req.query.search.split(' ').join('%') ;
@@ -34,9 +35,22 @@ if (req.query.search) {
 		.then(function(quizzes) {
 			res.render('quizzes/index.ejs', { quizzes: quizzes});
 		})
+
 		.catch(function(error) {
 			next(error);
 		});
+}
+  } else if (req.params.format == 'json') {
+    models.Quiz.findAll().then(function(quizzes) {
+
+     res.send(JSON.stringify(quizzes));
+    })
+
+    .catch(function(error){
+      next(error);
+    });
+ } else {
+   throw new Error("Formato no válido");
   }
 };
 
