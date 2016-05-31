@@ -30,7 +30,7 @@ var Quiz = sequelize.import(path.join(__dirname,'quiz'));
 
 
 // sequelize.sync() crea e inicializa tabla de preguntas en DB
-sequelize.sync()
+/*sequelize.sync()
     .then(function() {
         // Ya se han creado las tablas necesarias.
         return Quiz.count()
@@ -48,7 +48,7 @@ sequelize.sync()
     .catch(function(error) {
         console.log("Error Sincronizando las tablas de la BBDD:", error);
         process.exit(1);
-   });
+   });*/
 
 
 exports.Quiz = Quiz; // exportar definición de tabla Quiz
