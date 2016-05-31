@@ -29,6 +29,14 @@ if (!process.env.DATABASE_URL) {
 var Quiz = sequelize.import(path.join(__dirname,'quiz'));
 
 
+// Importar la definicion de la tabla Comments de comment.js
+var Comment = sequelize.import(path.join(__dirname,'comment'));
+
+// Relaciones entre modelos
+Comment.belongsTo(Quiz);
+Quiz.hasMany(Comment);
+
+
 // sequelize.sync() crea e inicializa tabla de preguntas en DB
 /*sequelize.sync()
     .then(function() {
@@ -52,3 +60,4 @@ var Quiz = sequelize.import(path.join(__dirname,'quiz'));
 
 
 exports.Quiz = Quiz; // exportar definición de tabla Quiz
+exports.Comment = Comment; // exportar definición de tabla Comments
