@@ -34,7 +34,6 @@ module.exports = function(sequelize, DataTypes) {
       });
 };
 
-
 /*
  * Encripta un password en claro.
  * Mezcla un password en claro con el salt proporcionado, ejecuta un SHA1 digest, 
