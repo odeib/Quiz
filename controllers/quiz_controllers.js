@@ -80,7 +80,8 @@ exports.show = function(req, res, next) {
     if ((req.params.format==='html') || (!req.params.format)) {
         var answer = req.query.answer || '';
         models.User.findAll({order: ['username']}).then(function(users) {
-                    res.render('quizzes/show', { quiz: req.quiz, answer: answer, users: users });
+                    res.render('quizzes/show', {quiz: req.quiz, answer: answer, users: users});
+
                 });             
     } else if (req.params.format === 'json') {
         res.send(JSON.stringify(req.quiz));
