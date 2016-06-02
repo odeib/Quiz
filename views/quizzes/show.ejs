@@ -7,6 +7,11 @@
       Pregunta: <%= quiz.question %>
      </p>
 
+    <% if (quiz.Attachment) { %>
+      <img src="<%= quiz.Attachment.url %>" />
+    <% } else { %>
+      <img src="/images/question.png" width="50px" />
+    <% } %>
     <p>
       <input type="text" name="answer" value="<%= answer %>" placeholder="Respuesta" />
       <input type="submit" value="Comprobar">
@@ -35,6 +40,7 @@
            <li> <%= comment.text %> </li>
 
            <a href="/quizzes/<%= quiz.id %>/comments/<%= comment.id %>/accept?_method=PUT">
+           
               <button>Aceptar</button>
            </a>
        <% } %>
